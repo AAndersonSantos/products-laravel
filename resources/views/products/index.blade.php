@@ -34,17 +34,19 @@
                             <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
                             <td>{{ $product->category->name ?? 'Sem categoria' }}</td>
                             <td>
-                                <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-warning me-1">
-                                    ✏️ Editar
-                                </a>
+                                <div class="d-flex flex-column align-items-center">
+                                    <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-warning mb-2">
+                                        ✏️ Editar
+                                    </a>
 
-                                <form action="{{ route('products.destroy', $product) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">
-                                        🗑️ Excluir
-                                    </button>
-                                </form>
+                                    <form action="{{ route('products.destroy', $product) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">
+                                            🗑️ Excluir
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @empty
