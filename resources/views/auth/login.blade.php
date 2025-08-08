@@ -3,23 +3,57 @@
 @section('title', 'Login')
 
 @section('content')
-    <h2>Login</h2>
+    <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header text-center bg-primary text-white">
+                    <h4>Login</h4>
+                </div>
 
-    <form method="POST" action="/login">
-        @csrf
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
 
-        <label>Email:</label><br>
-        <input type="email" name="email" value="{{ old('email') }}" required><br><br>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                id="email" 
+                                class="form-control @error('email') is-invalid @enderror" 
+                                value="{{ old('email') }}" 
+                                required 
+                                autofocus
+                            >
+                        </div>
 
-        <label>Senha:</label><br>
-        <input type="password" name="password" required><br><br>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Senha</label>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                id="password" 
+                                class="form-control @error('password') is-invalid @enderror" 
+                                required
+                            >
+                        </div>
 
-        @if ($errors->any())
-            <div style="color:red;">
-                @foreach ($errors->all() as $error) <p>{{ $error }}</p> @endforeach
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        @endif
-
-        <button type="submit">Entrar</button>
-    </form>
+        </div>
+    </div>
+</div>
 @endsection
