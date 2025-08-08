@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Categorias')
+
 @section('content')
     <div class="container py-4">
         <h1 class="mb-4">Categorias</h1>
@@ -22,6 +24,7 @@
                     <th>Ações</th>
                 </tr>
             </thead>
+            
             <tbody>
                 @forelse ($categories as $category)
                     <tr>
@@ -38,12 +41,14 @@
                             </form>
                         </td>
                     </tr>
-                @empty
+
+                    @empty
                     <tr>
                         <td colspan="4">Nenhuma categoria encontrada.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
+
     </div>
 @endsection
