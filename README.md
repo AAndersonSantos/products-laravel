@@ -109,3 +109,19 @@ Senha: admin123
 ### 💡 Importante:
 O sistema **não possui rotas públicas de registro** (/register).
 Para acessar a aplicação, utilize as credenciais acima ou crie novos usuários manualmente via banco de dados ou por meio de novos seeders personalizados.
+
+### 🔧 Alterações simuladas
+
+Foram realizadas duas mudanças estruturais no banco de dados para simular a evolução do projeto:
+
+Adição do campo **order** na entidade **Categoria**
+
+Tipo: **Integer**
+
+Objetivo: definir a ordenação das categorias na listagem.
+
+Adição do campo **show_in_showcase** na entidade **Produto**
+
+Tipo: boolean
+
+Objetivo: indicar se o produto deve ser exibido em uma vitrine promocional ou destaque.
